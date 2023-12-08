@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerAttackRadius
+  - Enemy
+  - Boomerang
   layers:
   - Default
   - TransparentFX

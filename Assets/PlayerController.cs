@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Blended;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoSingleton<PlayerController>
 {
 
     Rigidbody rb;
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetTrigger("isDeath");
         rb.isKinematic = true;
-      //  GameManager.instance.GameOver();
+      //GameManager.instance.GameOver();
         GetComponent<PlayerController>().enabled = false;
       //  GetComponent<PlayerAttack>().enabled = false;
     }
