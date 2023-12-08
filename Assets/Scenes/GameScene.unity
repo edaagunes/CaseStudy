@@ -2312,6 +2312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boomerang
       objectReference: {fileID: 0}
+    - target: {fileID: 8729135100816403677, guid: 4c27db45062207943b04ec08c20123eb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2347,6 +2351,10 @@ PrefabInstance:
       objectReference: {fileID: 1542850162}
     - target: {fileID: 5401642143844019673, guid: 148fae9ce89e88149a31696c4b18b558, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401642143844019673, guid: 148fae9ce89e88149a31696c4b18b558, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5401642143844019686, guid: 148fae9ce89e88149a31696c4b18b558, type: 3}

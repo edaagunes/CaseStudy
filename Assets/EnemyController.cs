@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
 
     private bool isThrowing;
     private static readonly int Throwing = Animator.StringToHash("Throw");
+    private static readonly int Death = Animator.StringToHash("Death");
 
 
     private void Awake()
@@ -62,7 +63,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Boomerang"))
         {
             enemyBlood.Play();
-            enemyAnimator.SetTrigger("Death");
+            enemyAnimator.SetTrigger(Death);
             enemyAnimator.SetBool(Throwing, false);
             navMesh.speed = 0;
             gameManager.killingEnemies++;
