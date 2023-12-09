@@ -12,10 +12,12 @@ public class EnemyController : MonoBehaviour
 
     public Transform throwSpawnPosition;
     public Transform playerTransform;
+    
     private NavMeshAgent navMesh;
     private Animator enemyAnimator;
     private bool isEnemyDeath;
 
+    // Enemy actions
     private bool isThrowing;
     private static readonly int Throwing = Animator.StringToHash("Throw");
     private static readonly int Death = Animator.StringToHash("Death");
@@ -23,6 +25,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        // Initialize
         gameManager = GameManager.Instance;
         pool = Pool.Instance;
     }
@@ -44,15 +47,16 @@ public class EnemyController : MonoBehaviour
 
     public void Throw()
     {
-        var ball = pool.SpawnObject(throwSpawnPosition.position, PoolItemType.Ball, null);
+        // Spawning a projectile (ball) from the pool at a specified position
         
-
+        var ball = pool.SpawnObject(throwSpawnPosition.position, PoolItemType.Ball, null);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerAttackRadius"))
         {
+            // Trigger throwing animation if the enemy is not dead
             if (!isEnemyDeath)
             {
                 isThrowing = true;
@@ -62,6 +66,9 @@ public class EnemyController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Boomerang"))
         {
+            // Play blood particle effect, trigger death animation, disable movement, update game stats,
+            // and destroy the enemy object after some time
+            
             enemyBlood.Play();
             enemyAnimator.SetTrigger(Death);
             enemyAnimator.SetBool(Throwing, false);
@@ -76,6 +83,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // Reset throwing flag and animation parameter when exiting the player's attack radius
         isThrowing = false;
         enemyAnimator.SetBool(Throwing, false);
     }

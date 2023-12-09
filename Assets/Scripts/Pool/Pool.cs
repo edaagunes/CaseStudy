@@ -10,18 +10,21 @@ namespace Blended
     [System.Serializable]
     public class PoolItem
     {
-        public List<GameObject> prefabs = new List<GameObject>();
-        public int amount;
-        public bool expandable;
+        // Represents an item in the object pool
+        public List<GameObject> prefabs = new List<GameObject>(); // List of prefabs for this pool item
+        public int amount; // Number of instances for this pool item
+        public bool expandable; // Indicates if this pool can be expanded
         public PoolItemType poolItemType;
-        [HideInInspector] public GameObject parent;
+        [HideInInspector] public GameObject parent; // Parent object for this pool item's instances
     }
 
     public class Pool : MonoSingleton<Pool>
     {
+        // Lists to manage pool items and objects
         public List<PoolItem> pooledItems;
         [HideInInspector] public List<GameObject> poolObjects;
-        private GameObject _parentObject;
+        private GameObject _parentObject; // Parent object for all pools
+
 
         /// <summary>
         /// Calls a member from the selected pool

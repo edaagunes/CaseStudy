@@ -5,12 +5,13 @@ using Random = UnityEngine.Random;
 
 public class CoinSpawner : MonoBehaviour
 {
-    private Pool pool;
+    private Pool pool; // Pool instance
     private GameManager gameManager;
     private Transform playerTransform;
-    public float randomX;
-    public float randomZ;
-    private List<GameObject> coinList = new List<GameObject>();
+    public float randomX; // Range for random X position
+    public float randomZ; // Range for random Z position
+    
+    private List<GameObject> coinList = new List<GameObject>(); // List to store spawned coins
  //   private List<GameObject> heartList = new List<GameObject>();
 
     private void Awake()
@@ -29,11 +30,12 @@ public class CoinSpawner : MonoBehaviour
         for (int i = 0; i < coins; i++)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            var coin = pool.SpawnObject(spawnPosition, PoolItemType.Coin, null);
-            coinList.Add(coin);
+            var coin = pool.SpawnObject(spawnPosition, PoolItemType.Coin, null); // Spawn a coin from the pool
+            coinList.Add(coin);  // Add the spawned coin to the list 
         }
     }
 
+    // Get a random spawn position
     private Vector3 GetRandomSpawnPosition()
     {
         randomX = Random.Range(-150, 150);
@@ -45,6 +47,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void Update()
     {
+        // If the number of coins in the scene is less than 100, continuously spawn 300 coins
         if (coinList.Count < 100)
         {
             SpawnCoin(300);

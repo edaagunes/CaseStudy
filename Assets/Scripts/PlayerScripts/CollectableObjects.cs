@@ -6,6 +6,7 @@ public class CollectableObjects : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
+        // Checking if the collider belongs to an object tagged as "Coin"
         if (other.gameObject.CompareTag("Coin"))
         {
             GameManager.Instance.coinAmount++;
